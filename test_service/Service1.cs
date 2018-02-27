@@ -28,13 +28,12 @@ namespace test_service
                 .Product;
             // Console.WriteLine(company+" "+product);
             Logging.WriteLog("старт");
-            regUpdater.WriteKey(company, product);
+            RegUpdater.WriteKey(company, product);
         }
 
         protected override void OnStop()
         {
             Logging.WriteLog("стоп");
-            Logging.Close();
         }
     }
 }

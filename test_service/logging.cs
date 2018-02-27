@@ -9,22 +9,18 @@ namespace test_service
 {
     public static class Logging
     {
-        private static readonly StreamWriter Log;
         static Logging()
         {
-            Log = !File.Exists("logfile.txt") ? new StreamWriter("logfile.txt") : File.AppendText("logfile.txt");
         }
 
         public static void WriteLog(string message)
         {
+            StreamWriter log = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "\\log.txt", true);
             var line = $"{DateTime.Now.ToString(CultureInfo.InvariantCulture)},{message}";
-            Log.WriteLine(line);
+            log.WriteLine(line);
+            log.Flush();
+            log.Close();
         }
 
-        public static void Close()
-        {
-            Log.Flush();
-            Log.Close();
-        }
     }
 }
