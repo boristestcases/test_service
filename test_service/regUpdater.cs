@@ -27,7 +27,7 @@ namespace test_service
                 Logging.WriteLog(ex.Message);
             }
         }
-
+        
         public static void RegAccess(RegistryKey key)
         {
             try
